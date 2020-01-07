@@ -71,6 +71,9 @@ def main():
     detector = dlib.get_frontal_face_detector()
     predictor = dlib.shape_predictor(face_landmark_path)
 
+xyz = 0
+pqr = []
+
     while cap.isOpened():
         ret, frame = cap.read()
         if ret:
@@ -96,8 +99,20 @@ def main():
                                 0.75, (0, 0, 0), thickness=2)
                     cv2.putText(frame, "Z: " + "{:7.2f}".format(euler_angle[2, 0]), (20, 120), cv2.FONT_HERSHEY_SIMPLEX,
                                 0.75, (0, 0, 0), thickness=2)
+                    
+                    if {:7.2f}".format(euler_angle[1, 0])<-30 && {:7.2f}".format(euler_angle[1, 0])>30 :
+                         pqr[xyz] = 0
+                    else
+                         pqr[xyz] = 1
+                         
+                    xyz++
 
             cv2.imshow("demo", frame)
+          
+            with open('student.csv','a') as csvFile:
+               writer = csv.writer(csvFile)
+               writer.writerow(row)
+               wirter.writerow(pqr)
 
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 cv2.destroyAllWindows()
